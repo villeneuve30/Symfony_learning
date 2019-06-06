@@ -11,6 +11,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Form\ArticleFormType;
 
 class BlogController extends AbstractController
 {
@@ -42,12 +43,15 @@ class BlogController extends AbstractController
             $article = new Article();
         }
        
-
+        /*
         $form = $this->createFormBuilder($article)
                      ->add('title')
                      ->add('content')
                      ->add('image')
-                     ->getForm();
+                     ->getForm(); 
+        */
+
+        $form = $this->createForm(ArticleFormType::class, $article);
 
         $form->handleRequest($request);
         
